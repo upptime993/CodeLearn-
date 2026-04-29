@@ -1,0 +1,179 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* CodeLearn Design System */
+  --background: #0F1117;
+  --foreground: #F0F2F5;
+  --card: #1A1D27;
+  --card-foreground: #F0F2F5;
+  --popover: #1A1D27;
+  --popover-foreground: #F0F2F5;
+  --primary: #2DD4BF;
+  --primary-foreground: #0F1117;
+  --secondary: #1A1D27;
+  --secondary-foreground: #F0F2F5;
+  --muted: #1A1D27;
+  --muted-foreground: #8B92A5;
+  --accent: #2DD4BF;
+  --accent-foreground: #0F1117;
+  --destructive: #EF4444;
+  --destructive-foreground: #F0F2F5;
+  --border: #2A2D3A;
+  --input: #1A1D27;
+  --ring: #2DD4BF;
+  --radius: 0.5rem;
+  
+  /* Custom Colors */
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --code-bg: #141821;
+  
+  /* Chart Colors */
+  --chart-1: #2DD4BF;
+  --chart-2: #22C55E;
+  --chart-3: #F59E0B;
+  --chart-4: #3B82F6;
+  --chart-5: #8B5CF6;
+  
+  /* Sidebar */
+  --sidebar: #1A1D27;
+  --sidebar-foreground: #F0F2F5;
+  --sidebar-primary: #2DD4BF;
+  --sidebar-primary-foreground: #0F1117;
+  --sidebar-accent: #2A2D3A;
+  --sidebar-accent-foreground: #F0F2F5;
+  --sidebar-border: #2A2D3A;
+  --sidebar-ring: #2DD4BF;
+}
+
+@theme inline {
+  --font-sans: 'Geist', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Geist Mono', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-code-bg: var(--code-bg);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--muted-foreground);
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Code syntax highlighting */
+.code-keyword { color: #3B82F6; }
+.code-string { color: #22C55E; }
+.code-function { color: #F59E0B; }
+.code-comment { color: #6B7280; }
+.code-number { color: #A78BFA; }
+.code-variable { color: #F0F2F5; }
+
+/* Typing animation for code */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.typing-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--primary);
+  animation: typing 2s steps(40) forwards, blink 0.75s step-end infinite;
+}
+
+/* Progress bar animation */
+@keyframes progress-fill {
+  from { width: 0%; }
+}
+
+.animate-progress {
+  animation: progress-fill 1s ease-out forwards;
+}
+
+/* Thin scrollbar utility */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
